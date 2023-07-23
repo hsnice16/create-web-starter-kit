@@ -33,6 +33,7 @@ const RUN_COMMAND = {
   }`,
   INITIALIZE_GIT: `cd ${enteredDirName} && git init`,
   CHANGE_BRANCH: `cd ${enteredDirName} && git add . && git commit -m "initial commit" && git branch -m main`,
+  INSTALL_DEPENDENCIES: `cd ${enteredDirName} && npm install`,
 };
 
 console.log(
@@ -42,10 +43,20 @@ console.log(
 if (!execCommand(RUN_COMMAND.CLONE)) process.exit(-1);
 if (!execCommand(RUN_COMMAND.REMOVE_GIT))
   console.error("Failed to remove git. Please do it manually.");
+
 if (!execCommand(RUN_COMMAND.INITIALIZE_GIT))
   console.error("Failed to initialize git. Please do it manually.");
+
 if (!execCommand(RUN_COMMAND.CHANGE_BRANCH))
   console.error("Failed to change the branch. Please do it manually.");
+else
+  console.log(
+    chalk.green("Committed initial commit and changed the branch, ✅")
+  );
+
+if (!execCommand(RUN_COMMAND.INSTALL_DEPENDENCIES))
+  console.error("Failed to install dependencies. Please do it manually.");
+else console.log(chalk.green("Installed the dependencies, ✅"));
 
 console.log(chalk.green("Successfully created 🎉!"));
 console.log(chalk.yellow("Happy coding, 💻"));
