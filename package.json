@@ -1,0 +1,22 @@
+{
+  "name": "create-web-starter-kit",
+  "description": "NPM command to scaffold Web Starter Kit",
+  "bin": "bin/create-web-starter-kit.js",
+  "version": "1.0.0",
+  "license": "MIT/Apache-2.0",
+  "author": "Himanshu Singh <hsnice16@gmail.com> (https://twitter.com/hsnice16)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hsnice16/create-web-starter-kit"
+  },
+  "keywords": [
+    "starter-kit",
+    "web-starter-kit",
+    "webpack",
+    "template",
+    "boilerplate"
+  ],
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
