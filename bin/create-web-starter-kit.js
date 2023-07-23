@@ -32,6 +32,7 @@ const RUN_COMMAND = {
     isWindowPlatform ? "del .git" : "rm -rf .git"
   }`,
   INITIALIZE_GIT: `cd ${enteredDirName} && git init`,
+  CHANGE_BRANCH: `cd ${enteredDirName} && git add . && git commit -m "initial commit" && git branch -m main`,
 };
 
 console.log(
@@ -39,14 +40,13 @@ console.log(
 );
 
 if (!execCommand(RUN_COMMAND.CLONE)) process.exit(-1);
-if (execCommand(RUN_COMMAND.MOVE)) {
-  if (!execCommand(RUN_COMMAND.REMOVE_GIT))
-    console.error("Failed to remove git. Please do it manually.");
-
-  if (!execCommand(RUN_COMMAND.INITIALIZE_GIT))
-    console.error("Failed to initialize git. Please do it manually.");
-} else process.exit(-1);
+if (!execCommand(RUN_COMMAND.REMOVE_GIT))
+  console.error("Failed to remove git. Please do it manually.");
+if (!execCommand(RUN_COMMAND.INITIALIZE_GIT))
+  console.error("Failed to initialize git. Please do it manually.");
+if (!execCommand(RUN_COMMAND.CHANGE_BRANCH))
+  console.error("Failed to change the branch. Please do it manually.");
 
 console.log(chalk.green("Successfully created 🎉!"));
-console.log(chalk.yellow("Happy coding, 🧑🏻‍💻"));
+console.log(chalk.yellow("Happy coding, 💻"));
 process.exit(0);
